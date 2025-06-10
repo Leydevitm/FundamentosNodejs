@@ -6,22 +6,13 @@
     
 //};
 
-const fs=require('fs');
-const base=3;
+
+const {crearArchivo}=require('./helpers/multiplicar'); 
+
 console.clear();
-console.log('==============');
-console.log(`tabla del ${base}`);
-console.log('==============');
 
-let salida='';
-for (let index = 1; index <= 10; index++) {
-   
-    salida +=(`${base} *${index} = ${base * index}\n`);
-    
-}
-console.log(salida)
-fs.writeFile(`tabla-${base}`,salida,(err)=>{
-    if(err) throw err;
+const base = 3;
 
-    console.log(`tabla-${base} creada`);
-})
+crearArchivo(base) 
+.then((nombreArchivo) => console.log(nombreArchivo, 'creado'))
+.catch((err) => console.log(err));
