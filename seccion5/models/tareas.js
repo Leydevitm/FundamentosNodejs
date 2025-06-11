@@ -2,6 +2,18 @@ const Tarea = require('./tarea');
 class Tareas{
 
     _listado={};
+
+    get listadoArr(){
+
+        const listado=[];
+        Object.keys(this._listado).forEach(key =>{
+          const tarea = this._listado[key]; // <-- aquí estaba el error
+        listado.push(tarea);
+        })
+
+        return listado;
+    }
+    
     
         constructor(){
             this._listado = {};

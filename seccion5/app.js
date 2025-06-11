@@ -8,7 +8,6 @@ const Tarea = require('./models/tarea');
 
 const main =async()=>{
  
-    console.log('hola mundo');
     let opt='';
     const tareas = new Tareas();
     do {
@@ -21,7 +20,7 @@ const main =async()=>{
           break;
        
         case '2':
-          console.log(tareas._listado);
+          console.log(tareas.listadoArr);
           break;
        }
       
