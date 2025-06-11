@@ -10,10 +10,11 @@ const main =async()=>{
     let opt='';
     const tareas = new Tareas();
     const tareasDB = leerDB();
-    if(tareasDB){
-      //establecer tarteas 
+    if(tareasDB){ 
+      //establecer tarteas
+      tareas.cargarTareasFromArray (tareasDB);
     }
-    await pausa();
+    
 
     do {
        opt = await inquirerMenu();
@@ -28,7 +29,7 @@ const main =async()=>{
           console.log(tareas.listadoArr);
           break;
        }
-        //guardarDB(tareas.listadoArr) ;
+        guardarDB(tareas.listadoArr) ;
         await pausa();
        
     } while (opt !=='0');
