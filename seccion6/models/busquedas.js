@@ -1,13 +1,13 @@
 const axios = require('axios');
 class Busquedas{
-    historial=['Hidalgo,Madrin,San Jose']
+    historial=['Hidalgo','Madrid','San jose']
 
     constructor(){
 
     }
     get paramsMapbox(){
         return {
-            'access_token': 'pk.eyJ1IjoibGV5NG4tZGV2IiwiYSI6ImNtYnZncTlrdzBvbWIybG9mOHUxejdjYncifQ.n7k3o2fsdjFnkRmKoqbsOg',
+            'access_token': process.env.MAPBOX_KEY,
             'limit': 5,
             'language': 'es'
         }

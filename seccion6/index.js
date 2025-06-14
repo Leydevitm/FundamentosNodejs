@@ -1,11 +1,8 @@
-
+require('dotenv').config();
 require('colors');
 const { inquirerMenu,pausa,leerInput } = require('./helpers/menu');
 const Busquedas = require('./models/busquedas');
 
-
-
-  
 
 const main =async()=>{
  
