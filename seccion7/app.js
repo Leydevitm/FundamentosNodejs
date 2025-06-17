@@ -10,7 +10,10 @@ app.use(express.static('public'));
 
 app.get('/',(req,res)=>{
     //res.sendFile(__dirname + '/public/index.html');
-    res.render('home');
+    res.render('home',{
+        nombre: 'Leivy Anel',
+        titulo: 'Curso de Node.js'
+    });
 });
 
 app.get('/elements',(req,res)=>{
