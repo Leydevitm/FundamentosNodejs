@@ -3,11 +3,14 @@ const express = require('express');
 const app = express()
 const port = 3000;
 
+app.set('view engine', 'hbs');
+
 //middleware
 app.use(express.static('public'));
 
-app.get('/index',(req,res)=>{
-    res.sendFile(__dirname + '/public/index.html');
+app.get('/',(req,res)=>{
+    //res.sendFile(__dirname + '/public/index.html');
+    res.render('home');
 });
 
 app.get('/elements',(req,res)=>{
