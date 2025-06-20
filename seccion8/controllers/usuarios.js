@@ -49,13 +49,18 @@ const usuariosPost = async(req,res = response)=> {
     });
 }
 
-const usuariosDelete = (req,res = response)=> {
-    res.json({
-        msg: 'delete API'
-    });
+const usuariosDelete = async(req,res = response)=> {
+    const {id}= req.params;
+    //Fisicamente lo borramos
+    //const usuario = await Usuario.findByIdAndDelete(id);
+    const usuario = await Usuario.findByIdAndUpdate(id,{estado: false});
+    res.json(usuario);
 }
 
 const usuariosPatch = (req,res = response)=> {
+    //Patch es para actualizar parcialmente
+    //En este caso no se hace nada, solo es un ejemplo
+
     res.json({
         msg: 'patch API'
     });
