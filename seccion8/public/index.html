@@ -24,6 +24,7 @@
     >
 
     </div>
+    <button id="google_signout">Signout</button>
     <script>
         function handleCredentialResponse(response) {
            
@@ -37,13 +38,28 @@
                     'Content-Type': 'application/json'},
                 body: JSON.stringify(body)
                 })
-            .then(resp=> resp.json())
+            .then(res=> res.json())
             .then(resp=>{
                 console.log(resp);
+                localStorage.setItem('email',resp.usuario.email);
 
             })
             .catch(console.warn);
         }
+
+      const button = document.getElementById('google_signout');
+    button.onclick = async() => {
+
+        console.log(google.accounts.id)
+        google.accounts.id.disableAutoSelect()
+        google.accounts.id.revoke(localStorage.getItem('email'), done => {
+            console.log('consent revoked');
+            localStorage.clear()
+            location.reload()
+        });
+    }
+        
+        
     </script>
 </body>
 </html>

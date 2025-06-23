@@ -13,9 +13,9 @@ async function googleVerify(token=''){
     //console.log(payload);
 
     return{
-        nombre: name,
-        img: picture,
-        correo: email
+        name,
+        picture,
+        email
     }
     
 
