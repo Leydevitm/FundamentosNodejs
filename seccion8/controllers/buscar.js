@@ -14,10 +14,22 @@ const buscarUsuarios = async(termino='', res=response)=>{
 
     if(esMongoID){
         const usuario = await Usuario.findById(termino);
-        res.json({
-            results:(usuario)?[usuario] : []
+        return res.json({
+            results:(usuario) ?[usuario] : []
         })
     }
+    const regex = new RegExp(termino, 'i');
+    //find regresa vacio en caso de no haber nada 
+    //cout para contar cuentas respuestas resivimos 
+    const usuarios = await Usuario.find({
+        $or: [{name: regex, estado: true},{email:regex}],
+        $and: [{estado:true}]
+        });
+     res.json({
+            results: usuarios
+        });
+
+
 }
 
 const buscar = (req,res=response)=>{
