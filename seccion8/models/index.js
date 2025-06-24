@@ -1,7 +1,7 @@
 
 const Categoria = require('./categoria')
-const Role = require('./role')
-const Server = require('.server')
+const Role = require('./rol')
+const Server = require('./server')
 const Usuario = require('./usuario')
 
 
