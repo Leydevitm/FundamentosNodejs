@@ -46,7 +46,8 @@ class Server{
         //Fileupload - Carga dearchivos
         this.app.use(fileUpload({
     useTempFiles: true,
-    tempFileDir: '/tmp/'
+    tempFileDir: '/tmp/',
+    createParentPath: true 
 }));
     }
     routes(){
