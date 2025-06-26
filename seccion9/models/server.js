@@ -36,14 +36,15 @@ class Server{
 
     sockets(){
         this.io.on('connection', socket =>{
-            console.log('Cliente conectado', socket.id);
+            // console.log('Cliente conectado', socket.id);
            // socket.disconect()
 
            socket.on('disconnect' , ()=> {
             console.log('Cliente Desconectado', socket.id);
            });
            socket.on('enviar-mensaje',(payload)=>{
-            console.log(payload)
+            //es enviado y refleja el payload
+            this.io.emit('enviar-mensaje', payload)
            });
         });
     }
