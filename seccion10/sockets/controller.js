@@ -1,0 +1,23 @@
+const TicketControl = require("../models/ticket-control");
+
+const ticketControl= new TicketControl();
+
+const socketController =(socket) =>{
+          
+           socket.on('disconnect' , ()=> {});
+           socket.on('enviar-mensaje',(payload, callback)=>{
+
+            const id =123456;
+            callback({id, fecha: new Date().getTime()});
+            //es envsiado y refleja el payload
+           socket.broadcast.emit('enviar-mensaje', payload)
+           });
+        }
+
+
+
+
+
+module.exports={
+    socketController
+}
