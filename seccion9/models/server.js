@@ -40,11 +40,14 @@ class Server{
            // socket.disconect()
 
            socket.on('disconnect' , ()=> {
-            console.log('Cliente Desconectado', socket.id);
+            // console.log('Cliente Desconectado', socket.id);
            });
-           socket.on('enviar-mensaje',(payload)=>{
-            //es enviado y refleja el payload
-            this.io.emit('enviar-mensaje', payload)
+           socket.on('enviar-mensaje',(payload, callback)=>{
+
+            const id =123456;
+            callback({id, fecha: new Date().getTime()});
+            //es envsiado y refleja el payload
+            //this.io.emit('enviar-mensaje', payload)
            });
         });
     }
