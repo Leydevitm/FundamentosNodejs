@@ -44,6 +44,7 @@ import db from '../db/connection';
 
     routes(){
         this.app.use(this.apiPaths.usuario, userRoutes)
+        
     }
  
 
