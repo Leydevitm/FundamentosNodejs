@@ -86,10 +86,9 @@ const deleteUsuario = (req, res) => __awaiter(void 0, void 0, void 0, function* 
             msg: 'No existe un usuario con el id' + id
         });
     }
-    res.json({
-        msg: 'delete Usuario',
-        id
-    });
+    yield usuario.update({ estado: false });
+    // await usuario.destroy();
+    res.json(usuario);
 });
 exports.deleteUsuario = deleteUsuario;
 //# sourceMappingURL=usuarios.js.map
