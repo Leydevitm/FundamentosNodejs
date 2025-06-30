@@ -2,21 +2,21 @@
 class Usuarios{
 
     constructor(){
-        this.persona=[];
+        this.personas=[];
     }
 
-    agregarPersona(id, nombre){
+    agregarPersona(id, nombre, sala){
         let persona ={
-            id,nombre
+            id,nombre,sala
         }
 
-        this.persona.push(persona);
+        this.personas.push(persona);
 
-        return this.persona;
+        return this.personas;
 
     }
     getPersona (id){
-        let persona = this.persona.filter(persona => persona.id === id )[0];
+        let persona = this.personas.filter(persona => persona.id === id )[0];
         return persona;
     }
 
@@ -25,13 +25,14 @@ class Usuarios{
     }
 
     getPersonasPorSala(sala){
-
+       let personasEnSala = this.personas.filter(persona => persona.sala ===sala);
+      return personasEnSala;
     }
 
     borrarPersona(id){
 
         let personaBorrada = this.getPersona(id);
-        this.persona = this.persona.filter(persona => persona.id !=id);
+        this.personas = this.personas.filter(persona => persona.id !=id);
             return personaBorrada
     }
 

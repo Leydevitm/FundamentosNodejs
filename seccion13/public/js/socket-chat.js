@@ -1,14 +1,15 @@
 var socket = io();
 
 var params = new URLSearchParams(window.location.search);
-if (!params.has('nombre')) {
+if (!params.has('nombre') || !params.has('sala')) {
     window.location = 'index.html';
-    throw new Error('El nombre es necesario');
+    throw new Error('El nombre y sala son necesarios es necesario');
 }
 
 
 var usuario ={
-    nombre: params.get('nombre')
+    nombre: params.get('nombre'),
+    sala: params.get('sala')
 
 };
 
@@ -49,7 +50,7 @@ socket.on('crearMensaje', function(mensaje) {
 //cuando un usuario entra o sale del chat 
 socket.on('listaPersona', function(personas) {
 
-    console.log('Servidor:', personas);
+    console.log( personas);
 
 });
 
