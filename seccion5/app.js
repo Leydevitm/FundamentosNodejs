@@ -1,6 +1,6 @@
 require('colors');
 const { inquirerMenu,pausa,leerInput,listadoTareasBorrar,confirmar,mostrarListadoChecklist } = require('./helpers/inquirer');
-const Tareas = require('./models/tareas');
+const Tareas = require('./models/Tareas');
 const {guardarDB,leerDB} = require('./helpers/guardarArchivo');
 
   
