@@ -11,6 +11,7 @@ const socketController = async( socket = new Socket(), io ) => {
     if ( !usuario ) {
         return socket.disconnect();
     }
+    console.log('Se conecto', usuario.nombre);
 
     // Agregar el usuario conectado
     chatMensajes.conectarUsuario( usuario );

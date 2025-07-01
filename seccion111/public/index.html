@@ -6,7 +6,7 @@
     <title>Google Signin</title>
 
     <meta name="google-signin-client_id" content="162323695359-94n3uksmm96o2ov3r1s6vg6od4ghsov4.apps.googleusercontent.com">
-
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 </head>
 <body class="container">
@@ -16,19 +16,21 @@
             <h1>Google Sign-In (Nuevo)</h1>
             <hr>
             <!-- Google Sign-In button -->
-            <div id="g_id_onload"
-                data-client_id="162323695359-94n3uksmm96o2ov3r1s6vg6od4ghsov4.apps.googleusercontent.com"
-                data-callback="handleCredentialResponse"
-                data-auto_prompt="false">
-            </div>
-            <div class="g_id_signin"
-                data-type="standard"
-                data-size="large"
-                data-theme="outline"
-                data-text="sign_in_with"
-                data-shape="rectangular"
-                data-logo_alignment="left">
-            </div>
+           <div id="g_id_onload"
+     data-client_id="162323695359-94n3uksmm96o2ov3r1s6vg6od4ghsov4.apps.googleusercontent.com"
+     data-callback="handleCredentialResponse"
+     data-auto_prompt="false">
+</div>
+
+<div class="g_id_signin"
+     data-type="standard"
+     data-size="large"
+     data-theme="outline"
+     data-text="sign_in_with"
+     data-shape="rectangular"
+     data-logo_alignment="left">
+</div>
+
 
             <br>
             <button onclick="signOut()" class="btn btn-danger">Cerrar sesión</button>
@@ -46,21 +48,33 @@
     </div>
 
    <script src="https://accounts.google.com/gsi/client" async defer></script>
-<script>
-    function handleCredentialResponse(response) {
-        console.log("ID TOKEN:", response.credential);
+   <!-- <script>
+    const url = (window.location.hostname.includes('localhost')) 
+        ? 'http://localhost:8080/api/auth/' 
+        : 'https://restserver-curso-fher.herokuapp.com/api/auth/';
 
-        // Puedes verificar el token aquí con tu backend si quieres
+    // ✅ Asignar la función al objeto global `window`
+    window.handleCredentialResponse = function(response) {
+        console.log("Token recibido de Google:", response.credential);
 
-        // ✅ Redirigir después de login
-        window.location.href = "chat.html";
-    }
+        fetch(url + 'google', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id_token: response.credential })
+        })
+        .then(res => res.json())
+        .then(({ token }) => {
+            console.log("Token recibido del backend:", token);
+            localStorage.setItem('token', token);
+            window.location = 'chat.html';
+        })
+        .catch(err => {
+            console.error("Error al autenticar:", err);
+        });
+    };
+</script> -->
 
-    function signOut() {
-        google.accounts.id.disableAutoSelect();
-        alert('Sesión cerrada');
-    }
-</script>
+<script src="./js/auth.js"></script>
 
 </body>
 
